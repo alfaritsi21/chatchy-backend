@@ -22,7 +22,7 @@ module.exports = {
     try {
       // send mail with defined transport object
       let info = await transporter.sendMail({
-        from: '"Mama Dede 👻" <foo@example.com>', // sender address
+        from: '"Chamtip Chatchy 👻" <foo@example.com>', // sender address
         to: target_email, // list of receivers
         subject: subject, // Subject line
         text: text, // plain text body

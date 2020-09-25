@@ -27,7 +27,7 @@ let upload = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits,
-}).single("product_image");
+}).single("user_image");
 
 const uploadFilter = (request, response, next) => {
   upload(request, response, function (error) {

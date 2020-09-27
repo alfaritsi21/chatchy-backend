@@ -104,17 +104,21 @@ module.exports = {
         if (checkPassword) {
           const {
             user_id,
+            user_nickname,
             user_name,
             user_email,
             user_phone,
-            user_status,
+            user_image,
+            user_bio,
           } = checkDataUser[0];
           let payload = {
             user_id,
+            user_nickname,
             user_name,
             user_email,
             user_phone,
-            user_status,
+            user_image,
+            user_bio,
           };
           const token = jwt.sign(payload, "RAHASIA", { expiresIn: "24h" });
           payload = { ...payload, token };
@@ -244,15 +248,11 @@ module.exports = {
         user_nickname,
         user_name,
         user_email,
-        user_password,
         user_phone,
         user_image,
         user_bio,
         user_status,
       } = request.body;
-
-      const salt = bcrypt.genSaltSync(10);
-      const encryptPassword = bcrypt.hashSync(user_password, salt);
 
       const checkId = await getUserById(id);
 
@@ -263,9 +263,7 @@ module.exports = {
             : checkId[0].user_nickname,
           user_name: user_name ? user_name : checkId[0].user_name,
           user_email: user_email ? user_email : checkId[0].user_email,
-          user_password: encryptPassword
-            ? encryptPassword
-            : checkId[0].user_password,
+
           user_phone: user_phone ? user_phone : checkId[0].user_phone,
           user_image: request.file === undefined ? "" : request.file.filename,
           user_bio: user_bio ? user_bio : checkId[0].user_bio,

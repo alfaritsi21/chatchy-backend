@@ -135,7 +135,7 @@ module.exports = {
   deleteUser: (id) => {
     return new Promise((resolve, reject) => {
       connection.query(
-        "UPDATE user SET user_status = 0 WHERE user_id = ?",
+        "DELETE FROM user WHERE user_id = ?",
         id,
         (error, result) => {
           if (!error) {

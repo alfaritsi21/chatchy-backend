@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const upload = require("../middleware/multer");
+const { authorization } = require("../middleware/auth");
 
 const {
   getMessageChat,
@@ -8,11 +9,11 @@ const {
   searchMessage,
 } = require("../controller/message");
 
-router.get("/", getMessageChat);
+router.get("/", authorization, getMessageChat);
 
-router.post("/chat", sendMessage);
-router.post("/search", searchMessage);
+router.post("/chat", authorization, sendMessage);
+router.post("/search", authorization, searchMessage);
 
-router.delete("/delete/:id", deleteMessage);
+router.delete("/delete/:id", authorization, deleteMessage);
 
 module.exports = router;

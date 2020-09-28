@@ -78,7 +78,8 @@ module.exports = {
     };
     try {
       const result = await postUser(setData);
-      const id = result.result.user_id;
+      console.log(result);
+      const id = result.result.insertId;
       const link = `http://127.0.0.1:3001/user/activation/${id}`;
       mailer.send(
         "arqeezy.gg@gmail.com",

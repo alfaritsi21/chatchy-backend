@@ -6,8 +6,10 @@ const route = require("express").Router();
 
 const user = require("./routes/user");
 const message = require("./routes/message");
+const contact = require("./routes/contact");
 
 route.use("/user", user);
 route.use("/message", message);
+route.use("/contact", contact);
 
 module.exports = route;

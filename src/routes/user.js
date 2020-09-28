@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const upload = require("../middleware/multer");
+const { authorization } = require("../middleware/auth");
 
 const {
   registerUser,
@@ -18,14 +19,14 @@ router.get("/:id", getUserById);
 
 router.post("/login", loginUser);
 router.post("/register", registerUser);
-router.post("/search/username", searchUserName);
-router.post("/search/usernickname", searchUserNickName);
-router.post("/search/userphone", searchUserPhone);
+router.post("/search/username", authorization, searchUserName);
+router.post("/search/usernickname", authorization, searchUserNickName);
+router.post("/search/userphone", authorization, searchUserPhone);
 
-router.patch("/activation/:id", userActivation);
-router.patch("/:id", upload, editUser);
-router.patch("/password/reset", resetPassword);
+router.patch("/activation/:id", authorization, userActivation);
+router.patch("/:id", authorization, upload, editUser);
+router.patch("/password/reset", authorization, resetPassword);
 
-router.delete("/:id", deleteUser);
+router.delete("/:id", authorization, deleteUser);
 
 module.exports = router;

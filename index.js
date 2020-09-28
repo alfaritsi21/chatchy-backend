@@ -71,13 +71,10 @@ io.on("connection", (socket) => {
     socket.join(data.user.user_id + "-" + data.target.user_id);
     socket.join(data.target.user_id + "-" + data.user.user_id);
     const result = await getMessageChat(data.user.user_id, data.target.user_id);
-    console.log(result[0].message_sender);
+    console.log(result);
     result.forEach((item) => {
       setData = {
-        user: {
-          user_id: item.message_sender,
-          user_nickname: item.message_sender,
-        },
+        user: item,
         message: item.message_chat,
         room: data.target.user_id + "-" + data.user.user_id,
       };

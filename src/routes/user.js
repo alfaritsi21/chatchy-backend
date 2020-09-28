@@ -23,9 +23,9 @@ router.post("/search/username", authorization, searchUserName);
 router.post("/search/usernickname", authorization, searchUserNickName);
 router.post("/search/userphone", authorization, searchUserPhone);
 
-router.patch("/activation/:id", authorization, userActivation);
-router.patch("/:id", authorization, upload, editUser);
-router.patch("/password/reset", authorization, resetPassword);
+router.patch("/activation/:id", userActivation);
+router.patch("/:id", upload, editUser);
+router.patch("/password/reset", resetPassword);
 
 router.delete("/:id", authorization, deleteUser);
 

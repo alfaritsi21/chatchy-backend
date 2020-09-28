@@ -4,7 +4,7 @@ module.exports = {
   getMessageChat: (sender, receiver) => {
     return new Promise((resolve, reject) => {
       connection.query(
-        `SELECT * FROM message WHERE message_sender = ${sender} AND message_receiver = ${receiver} OR message_sender = ${receiver} AND message_receiver = ${sender} ORDER BY message_created_at ASC`,
+        `SELECT * FROM message LEFT JOIN user ON message.message_sender = user.user_id WHERE message_sender = ${sender} AND message_receiver = ${receiver} OR message_sender = ${receiver} AND message_receiver = ${sender} ORDER BY message_created_at ASC`,
         (error, result) => {
           !error ? resolve(result) : reject(new Error(error));
         }

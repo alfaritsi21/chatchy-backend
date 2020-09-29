@@ -44,4 +44,29 @@ module.exports = {
       );
     });
   },
+  searchContactByUserName: (user_name) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        `SELECT * FROM contact LEFT JOIN user on contact.contact_owner = user.user_id WHERE contact_owner = 13 AND contact_saved LIKE '%a%'`,
+        (error, result) => {
+          !error ? resolve(result) : reject(new Error(error));
+        }
+      );
+    });
+  },
+  addToContact: (owner, saved) => {
+    return new Promise((resolve, reject) => {
+      connection.query(
+        "INSERT INTO contact (contact_owner, contact_saved) VALUES (?, ?)",
+        [owner, saved],
+        (error, result) => {
+          if (!error) {
+            resolve(result.affectedRows);
+          } else {
+            reject(new Error(error));
+          }
+        }
+      );
+    });
+  },
 };

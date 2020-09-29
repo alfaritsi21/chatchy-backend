@@ -19,7 +19,7 @@ router.get("/:id", getUserById);
 
 router.post("/login", loginUser);
 router.post("/register", registerUser);
-router.post("/search/username", authorization, searchUserName);
+router.post("/search/username", searchUserName);
 router.post("/search/usernickname", authorization, searchUserNickName);
 router.post("/search/userphone", authorization, searchUserPhone);
 

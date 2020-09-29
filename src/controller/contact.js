@@ -2,7 +2,11 @@ const bcrypt = require("bcrypt");
 const helper = require("../helper");
 const jwt = require("jsonwebtoken");
 
-const { getContactByOwner, deleteContact } = require("../model/contact");
+const {
+  getContactByOwner,
+  deleteContact,
+  addToContact,
+} = require("../model/contact");
 
 module.exports = {
   getContact: async (request, response) => {
@@ -27,6 +31,19 @@ module.exports = {
       const result = await deleteContact(owner, saved);
       if (result) {
         return helper.response(response, 201, "Contact Deleted", result);
+      } else {
+        return helper.response(response, 404, "Contact  Not Found");
+      }
+    } catch (error) {
+      return helper.response(response, 400, "Bad Request", error);
+    }
+  },
+  addContact: async (request, response) => {
+    try {
+      const { owner, saved } = request.body;
+      const result = await addToContact(owner, saved);
+      if (result) {
+        return helper.response(response, 201, "Contact Added", result);
       } else {
         return helper.response(response, 404, "Contact  Not Found");
       }

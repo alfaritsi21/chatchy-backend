@@ -73,6 +73,7 @@ module.exports = {
       user_email,
       user_password: encryptPassword,
       user_phone,
+      user_image: "2020-10-20T02-48-02.859Z-default.jpg",
       user_status: 0,
       user_created_at: new Date(),
     };

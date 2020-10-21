@@ -1,6 +1,6 @@
 <h1 align="center">ExpressJS - Chatchy RESTfull API</h1>
 
-A system website app for sending message on a realtime. [More about Express](https://en.wikipedia.org/wiki/Express.js)
+Catchy is the best choice for you if you want to send message to your friend. On Chatchy you can invite your friend and add them into your contact list. Chatchy are build with socket technology so the message you've been sent can received by your friend on a realtime situation. [More about Express](https://en.wikipedia.org/wiki/Express.js)
 
 ## Built With
 
@@ -31,7 +31,7 @@ Open .env file on your favorite code editor, and copy paste this code below :
 
 ```
 DB_HOST=localhost // Database Host
-DB_ROOT=root // Database Root
+DB_USER=root // Database Root
 DB_PASSWORD= // Password set for database is empty
 DB_DATABASE=chatchy // Database
 DB_PORT=3001 // PORT
@@ -40,71 +40,7 @@ DB_IP=127.0.0.1 // IP
 
 ## End Point
 
-**1. USER**
-
-- `/user/register`(Register New User)
-
-  - `{ "user_name":"roger", "user_email":"roger@gmail.com", "user_password":"Chatchy21!", "user_phone":"235467"}`
-
-- `/user/login`(Login Account)
-
-  - `{ "user_email":"ijiq@gmail.com", "user_password":"Chatchy21!"}`
-
-- `/user/activation/:id`(Activate Account)
-
-- `/user/:id`(Get User by ID)
-
-- `/user/search/username`(Search user by username)
-
-  - `{ "user_name" : "nezuko" }`
-
-- `/user/search/usernickname`(Search user by nickname)
-
-  - `{ "user_nickname" : "Ade Londok" }`
-
-- `/user/search/userphone`(Search user by phone number)
-
-  - `{ "user_phone" : 0854356 }`
-
-- `/user/:id`(Edit Profile)
-
-  - `{ "user_nickname" : "Djanbi Dumadi", "user_name" : "djanbi12", "user_email" : "djanbi@gmail.com" "user_password" : "Chatchy21!", "user_phone" : 08123713, "user_image" : {upload}, "user_bio" : "Halo Semua"}`
-
-- `/user/password/reset/`(Reset Password)
-
-  - `{ "user_email": "salsa@gmail.com", "user_password" : "Chatchy21!", "re_password": "Chatchy21!" }`
-
-**2. MESSAGE**
-
-- `/message/chat/`(Send a Message)
-
-  - `{ "message_sender": 1, "message_receiver": 2, "message_chat": "Kamu sekarang tinggal dimana ?" }`
-
-- `/message/delete/:id`(Delete a Message)
-
-- `/message/search/`(Send a Message)
-
-  - `{ "message_chat" : "hai", "sender" : 1, "receiver" : 2 }`
-
-- `/message/` (Get data Message)
-
-  - `{ "sender" : 11, "receiver" : 23 }`
-
-**3. CONTACT**
-
-- `/contact/:id`(Get Contact By Owner)
-
-- `/contact/delete`(Delete Contact)
-
-  - `{ "owner" : 15, "saved" : 19 }`
-
-- `/contact/addcontact`(Add Contact)
-
-  - `{ "owner" : 15, "saved" : 19 }`
-
-**Documentation API**
-
-https://documenter.getpostman.com/view/12330489/TVKJxEeR
+**See Documentation API [Here](https://documenter.getpostman.com/view/12330489/TVKJxEeR)**
 
 ## License
 
